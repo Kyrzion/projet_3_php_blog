@@ -1,0 +1,39 @@
+body
+{
+  background-color: #F0F8FF;
+}
+h1, h3
+{
+    text-align:center;
+}
+h1
+{
+
+}
+h3
+{
+    background-color:#B8DDFE;
+    color:white;
+    font-size:1.2em;
+    margin-bottom:0px;
+    padding:5px;
+    text-shadow: 2px 2px 4px #000000;
+}
+.news p
+{
+    background-color:#D8ECFE;
+    margin-top:0px;
+}
+.news
+{
+    width:70%;
+    margin:auto;
+    
+}
+
+a
+{
+
+    text-decoration: none;
+    color: blue;
+}
