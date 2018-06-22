@@ -4,9 +4,9 @@
     <head>
         <meta charset="utf-8" />
         <title>Administration</title>
-        <link href="../public/blog-home.css" rel="stylesheet"/>
+        <link href="../../../public/blog-home.css" rel="stylesheet"/>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=apiKey=localhost"></script>
         <script src="tinymce.js"></script>
     </head>
@@ -20,7 +20,7 @@
           <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
               <li class="nav-item">
-                <a class="nav-link" href="../index.php">Accueil
+                <a class="nav-link" href="../../../index.php">Accueil
 
                 </a>
               </li>
@@ -38,58 +38,46 @@
           </div>
         </div>
       </nav>
-
       <div class="container">
-        <h2 class="my-4 text-center">Bienvenue sur l'administration
-          <small>de votre blog</small>
-        </h2>
-
 
         <div class="row">
 
           <!-- Blog Entries Column -->
           <div class="col-md-8">
 
-        <?php
-        $toto_hash = password_hash("toto",PASSWORD_BCRYPT);
-
-        if (password_verify($_POST["mot_de_passe"] ,$toto_hash)==true || $_SESSION['connect'] == true)
-    {
-        $_SESSION['connect'] = true; ?>
-
-        <h2 class="my-4" style="margin-left:5%;">Administration
-          <small>- Modifications possibles</small>
-        </h2>
-
-          <a class="btn btn-primary card-body" style="margin: 5% 1% 50% 5%;" href="addpost.php"> Ecrire un nouvel article</a>
-          <a class="btn btn-success card-body" style="margin: 5% 1% 50% 5%;" href="recap.php"> Modifier un article</a>
-          <a class="btn btn-danger card-body" style="margin: 5% 1% 50% 5%;" href="recap.php"> Supprimer un article</a>
+            <h2 class="my-4 ">Billet simple pour l'Alaska
+              <small>- Une aventure extraordinaire</small>
+            </h2>
+            <a class="btn btn-secondary" href="secret.php"> Revenir au panneau d'administration</a>
+          <p></p>
 
 
+            <h4><strong>Ecrire un nouvel article</strong></h4>
 
-        <?php
-    }
-    else
-    {
-        echo '<p>Mot de passe incorrect</p>';
-    }
-    ?>
+            <form action="postAdded.php" method="post">
+                <label for="title">Titre: </label>
+                <input type="text" class="form-control" name="titleform" ></br>
 
+                <label for="title">Corps de l'article: </label>
+                <textarea type="text" class="form-control" rows="5" name="contentform" ></textarea></br>
 
-      </div>
-    </div>
-  </div>
-    <!-- Footer -->
-    <footer class="py-5 bg-dark">
-      <div class="container">
-        <p class="m-0 text-center text-white">Copyright &copy; BERTET Théo - 2018</p>
-      </div>
-      <!-- /.container -->
-    </footer>
+                <input type="submit" name="submit" class="btn btn-primary" style="margin-bottom:15%;" value="Envoyer" />
+            </form>
 
-    <!-- Bootstrap core JavaScript -->
-    <script src="../vendor/jquery/jquery.min.js"></script>
-    <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+          </div>
+        </div>
+        </div>
+        <!-- Footer -->
+        <footer class="py-5 bg-dark">
+          <div class="container">
+            <p class="m-0 text-center text-white">Copyright &copy; BERTET Théo - 2018</p>
+          </div>
+          <!-- /.container -->
+        </footer>
 
-    </body>
-</html>
+        <!-- Bootstrap core JavaScript -->
+        <script src="../vendor/jquery/jquery.min.js"></script>
+        <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+        </body>
+        </html>

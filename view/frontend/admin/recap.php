@@ -18,8 +18,8 @@ $req = $db->query('SELECT * FROM posts');
 <head>
     <meta charset="utf-8" />
     <title>Administration</title>
-    <link href="../public/blog-home.css" rel="stylesheet"/>
-    <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../../public/blog-home.css" rel="stylesheet"/>
+    <link href="../../../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 </head>
 
@@ -33,7 +33,7 @@ $req = $db->query('SELECT * FROM posts');
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a class="nav-link" href="../index.php">Accueil
+            <a class="nav-link" href="../../../index.php">Accueil
               <span class="sr-only">(current)</span>
             </a>
           </li>

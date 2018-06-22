@@ -4,9 +4,9 @@
     <head>
         <meta charset="utf-8" />
         <title>Page protégée par mot de passe</title>
-        <link href="public/blog-home.css" rel="stylesheet"/>
+        <link href="../../public/blog-home.css" rel="stylesheet"/>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     </head>
     <body>
 
@@ -19,7 +19,7 @@
           <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
               <li class="nav-item">
-                <a class="nav-link" href="index.php">Accueil
+                <a class="nav-link" href="../../index.php">Accueil
 
                 </a>
               </li>

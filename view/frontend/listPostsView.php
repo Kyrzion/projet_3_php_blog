@@ -45,7 +45,7 @@ $req = $db->query('SELECT * FROM posts');
           </li>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="form.php">Connexion</a>
+            <a class="nav-link" href="view/frontend/form.php">Connexion</a>
           </li>
         </ul>
       </div>
@@ -68,7 +68,7 @@ $req = $db->query('SELECT * FROM posts');
       <!-- Blog Post -->
 	  <?php
 
-		 $posts = $db->query("SELECT * FROM posts ORDER BY title DESC LIMIT $zone,5");
+		 $posts = $db->query("SELECT * FROM posts ORDER BY creation_date DESC LIMIT $zone,5");
 		  while($reponse = $posts->fetch())
           {?>
           <div class="card mb-4">
