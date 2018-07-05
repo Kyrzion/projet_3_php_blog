@@ -4,11 +4,11 @@
     <head>
         <meta charset="utf-8" />
         <title>Administration</title>
-        <link href="../../../public/blog-home.css" rel="stylesheet"/>
+        <link href="public/blog-home.css" rel="stylesheet"/>
+        <link href="public/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <link href="../../../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=apiKey=localhost"></script>
-        <script src="tinymce.js"></script>
+        <script src="view/frontend/admin/tinymce.js"></script>
     </head>
     <body>
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
@@ -29,10 +29,10 @@
               </li>
               </li>
               <li class="nav-item active">
-                <a class="nav-link" href="secret.php">Administration</a>
+                <a class="nav-link" href="./index.php?action=dashboard">Administration</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="disconnect.php">Déconnexion</a>
+                <a class="nav-link" href="#">Déconnexion</a>
               </li>
             </ul>
           </div>
@@ -48,13 +48,12 @@
             <h2 class="my-4 ">Billet simple pour l'Alaska
               <small>- Une aventure extraordinaire</small>
             </h2>
-            <a class="btn btn-secondary" href="secret.php"> Revenir au panneau d'administration</a>
+            <a class="btn btn-secondary" href="./index.php?action=dashboard"> Revenir au panneau d'administration</a>
           <p></p>
-
 
             <h4><strong>Ecrire un nouvel article</strong></h4>
 
-            <form action="postAdded.php" method="post">
+            <form action="./index.php?action=AddPost" method="post">
                 <label for="title">Titre: </label>
                 <input type="text" class="form-control" name="titleform" ></br>
 
@@ -76,8 +75,8 @@
         </footer>
 
         <!-- Bootstrap core JavaScript -->
-        <script src="../vendor/jquery/jquery.min.js"></script>
-        <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="vendor/jquery/jquery.min.js"></script>
+        <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
         </body>
         </html>

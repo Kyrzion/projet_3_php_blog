@@ -12,9 +12,14 @@ catch(Exception $e)
 
 $stmt = $db->prepare('DELETE FROM posts WHERE id=:id');
 $stmt->execute(array(':id' => $id));
-    ?>
 
 
+/* elseif ($_GET['action'] == 'deletedpost'){
+    if (isset($_GET['id']) && $_GET['id'] > 0){
+      deletedpost_admin($_GET['id']);}
+    else{
+      echo 'Erreur : aucun identifiant de billet envoyé. Suppresion impossible' ;}
+}   index.php */ ?>
     <!DOCTYPE html>
     <html>
     <head>
@@ -43,7 +48,7 @@ $stmt->execute(array(':id' => $id));
                 <a class="nav-link" href="#">Chapitres</a>
               </li>
               <li class="nav-item active">
-                <a class="nav-link" href="../form.php">Administration</a>
+                <a class="nav-link" href="./index.php?action=dashboard">Administration</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="disconnect.php">Déconnexion</a>
@@ -61,5 +66,5 @@ $stmt->execute(array(':id' => $id));
             <h2 class="my-4 ">Administration
               <small>- Votre article a bien été supprimé</small>
             </h2>
-            <a class="btn btn-secondary"href="recap.php"> Revenir au récapitulatif des articles</a>
+            <a class="btn btn-secondary"href="./index.php?action=recap"> Revenir au récapitulatif des articles</a>
           <p></p>

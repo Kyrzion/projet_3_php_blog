@@ -1,24 +1,4 @@
 
-     <?php
-     try
-      {
-       $db = new PDO('mysql:host=localhost;dbname=projet_2;charset=utf8', 'root', '');
-      }
-     catch(Exception $e)
-      {
-       die('Erreur : '.$e->getMessage());
-      }
-  /*print_r($db->errorInfo());*/
-
-      $secutitle = $_POST['titleform'];
-      $secucontent = $_POST['contentform'];
-
-
-        $req = $db->prepare('INSERT INTO posts(title,content,creation_date) VALUES(:title2, :content2,now())');
-        $req->execute(array(
-          'title2' => $secutitle,
-         'content2' => $secucontent));
-     ?>
      <!DOCTYPE html>
      <html>
          <head>
@@ -47,10 +27,10 @@
                   </li>
                   </li>
                   <li class="nav-item active">
-                    <a class="nav-link" href="secret.php">Administration</a>
+                    <a class="nav-link" href="./index.php?action=dashboard">Administration</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="disconnect.php">Déconnexion</a>
+                    <a class="nav-link" href="">Déconnexion</a>
                   </li>
                 </ul>
               </div>
@@ -62,10 +42,10 @@
                 <h2 class="my-4 ">Billet simple pour l'Alaska
                   <small>- Une aventure extraordinaire</small>
                 </h2>
-                <a class="btn btn-secondary" href="secret.php"> Revenir au panneau d'administration</a>
+                <a class="btn btn-secondary" href="./index.php?action=dashboard"> Revenir au panneau d'administration</a>
               <p></p>
                 <h4> L'article a bien été publié ! </h4>
-                <a href="addpost.php"><p>Retour à la page précédente.</p></a>
+                <a href="./index.php?action=writepost"><p>Retour à la page précédente.</p></a>
 
  </body>
 </html>

@@ -4,9 +4,9 @@
     <head>
         <meta charset="utf-8" />
         <title>Administration</title>
-        <link href="../../../public/blog-home.css" rel="stylesheet"/>
+        <link href="public/blog-home.css" rel="stylesheet"/>
+        <link href="public/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <link href="../../../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=apiKey=localhost"></script>
         <script src="tinymce.js"></script>
     </head>
@@ -29,10 +29,10 @@
               </li>
               </li>
               <li class="nav-item active">
-                <a class="nav-link" href="secret.php">Administration</a>
+                <a class="nav-link" href="./index.php?action=dashboard">Administration</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="disconnect.php">Déconnexion</a>
+                <a class="nav-link" href="#">Déconnexion</a>
               </li>
             </ul>
           </div>
@@ -61,9 +61,9 @@
           <small>- Modifications possibles</small>
         </h2>
 
-          <a class="btn btn-primary card-body" style="margin: 5% 1% 50% 5%;" href="addpost.php"> Ecrire un nouvel article</a>
-          <a class="btn btn-success card-body" style="margin: 5% 1% 50% 5%;" href="recap.php"> Modifier un article</a>
-          <a class="btn btn-danger card-body" style="margin: 5% 1% 50% 5%;" href="recap.php"> Supprimer un article</a>
+          <a class="btn btn-primary card-body" style="margin: 5% 1% 50% 5%;" href="./index.php?action=writepost"> Ecrire un nouvel article</a>
+          <a class="btn btn-success card-body" style="margin: 5% 1% 50% 5%;" href="./index.php?action=recap"> Modifier un article</a>
+          <a class="btn btn-danger card-body" style="margin: 5% 1% 50% 5%;" href="./index.php?action=recap"> Supprimer un article</a>
 
 
 
@@ -88,8 +88,8 @@
     </footer>
 
     <!-- Bootstrap core JavaScript -->
-    <script src="../vendor/jquery/jquery.min.js"></script>
-    <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="public/vendor/jquery/jquery.min.js"></script>
+    <script src="public/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     </body>
 </html>

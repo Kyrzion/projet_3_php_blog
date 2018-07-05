@@ -18,8 +18,8 @@ $req = $db->query('SELECT * FROM posts');
 <head>
     <meta charset="utf-8" />
     <title>Administration</title>
-    <link href="../../../public/blog-home.css" rel="stylesheet"/>
-    <link href="../../../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="public/blog-home.css" rel="stylesheet"/>
+    <link href="public/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 </head>
 
@@ -41,10 +41,10 @@ $req = $db->query('SELECT * FROM posts');
             <a class="nav-link" href="#">Chapitres</a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="../form.php">Administration</a>
+            <a class="nav-link" href="./index.php?action=dashboard">Administration</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="disconnect.php">Déconnexion</a>
+            <a class="nav-link" href="#">Déconnexion</a>
           </li>
         </ul>
       </div>
@@ -56,12 +56,12 @@ $req = $db->query('SELECT * FROM posts');
     <div class="row">
       <div class="col-md-8">
         <h4 class="my-4">
-          <a class="btn btn-primary" href="addpost.php">Ecrire un nouvel article</a>
+          <a class="btn btn-primary" href="./index.php?action=writepost">Ecrire un nouvel article</a>
         </h4>
         <h2 class="my-4 ">Administration
           <small>- Récapitulatif des articles</small>
         </h2>
-        <a class="btn btn-secondary"href="secret.php"> Revenir au panneau d'administration</a>
+        <a class="btn btn-secondary"href="./index.php?action=dashboard"> Revenir au panneau d'administration</a>
       <p></p>
 
 
@@ -78,7 +78,7 @@ $req = $db->query('SELECT * FROM posts');
           echo htmlspecialchars($reponse['title']);
           echo'<p >';
           echo'<a class="btn btn-success" href="modif.php" style="margin-right:1%;"> Modifier</a>';
-          echo'<a class="btn btn-danger" href="delete.php?ID='.$reponse['id'].'"> Supprimer</a>';
+          echo'<a class="btn btn-danger" href="./index.php?action=deletepost?ID='.$reponse['id'].'"> Supprimer</a>';
         ?>
         <div class="card-footer text-muted">
           Ecrit le <em> <?= $reponse['creation_date'] ?></em>
@@ -126,7 +126,7 @@ $req = $db->query('SELECT * FROM posts');
     <!-- /.container -->
   </footer>
   <!-- Bootstrap core JavaScript -->
-      <script src="../jquery.min.js"></script>
-      <script src="../bootstrap.bundle.min.js"></script>
+  <script src="public/vendor/jquery/jquery.min.js"></script>
+  <script src="public/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     </body>
   </html>

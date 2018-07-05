@@ -45,7 +45,7 @@ $req = $db->query('SELECT * FROM posts');
           </li>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="view/frontend/form.php">Connexion</a>
+            <a class="nav-link" href="index.php?action=login">Connexion</a>
           </li>
         </ul>
       </div>
@@ -150,8 +150,8 @@ $req = $db->query('SELECT * FROM posts');
   </footer>
 
   <!-- Bootstrap core JavaScript -->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="public/vendor/jquery/jquery.min.js"></script>
+  <script src="public/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   </body>
   </html>
 
