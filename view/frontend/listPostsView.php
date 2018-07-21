@@ -3,26 +3,7 @@
 
 <?php ob_start(); ?>
 
-<?php
- $db = new PDO('mysql:host=localhost;dbname=projet_2;charset=utf8', 'root', '');
-if (!isset($_GET['page']) || $_GET['page']=='0') // Si la variable page n'est pas définie ou vaut zéro
-{
-    $page=1;
-}
-else
-{
-    $page=$_GET['page']; // Sinon lecture de la page
-}
-$zone=5*($page-1); // Calcul du facteur multiplicateur pour determinez la zone
 
-// [...] ton code s'il y en a
-
-
-
-
-
-$req = $db->query('SELECT * FROM posts');
-?>
 <!DOCTYPE html>
 <html>
 <body>
@@ -68,7 +49,7 @@ $req = $db->query('SELECT * FROM posts');
       <!-- Blog Post -->
 	  <?php
 
-		 $posts = $db->query("SELECT * FROM posts ORDER BY creation_date DESC LIMIT $zone,5");
+
 		  while($reponse = $posts->fetch())
           {?>
           <div class="card mb-4">
@@ -95,7 +76,7 @@ $req = $db->query('SELECT * FROM posts');
 			         <a href="index.php?action=post&amp;id=<?= $reponse['id'] ?>" class="btn btn-primary">Lire la suite &rarr;</a>
           </div>
           <div class="card-footer text-muted">
-            Ecrit le <em> <?= $reponse['creation_date'] ?></em>
+            Ecrit le <em> <?= $reponse['creation_date_fr'] ?></em>
             <p> par Jean Forteroche</p>
           </div>
         </div>
@@ -107,13 +88,13 @@ $req = $db->query('SELECT * FROM posts');
         <div class="pagination justify-content-center mb-4">
           <div class="page-item">
             <?php
-                $nb_articles=$req->rowCount(); // Connaitre le nombre de resultats
+                $nb_articles=15; // Connaitre le nombre de resultats
                 $nb_pages=ceil($nb_articles/5); // Divisé par le nombre de pages
                 echo  'Page : ';
                 for($i=1; $i<$nb_pages+1; $i++)
                 {
                     ?>
-                        <a class="btn btn-primary" href="index.php?page=<?php echo $i ?>"> <?php echo $i ?></a>
+                        <a class="btn btn-primary" href="index.php?page=<?php echo $i-1 ?>"> <?php echo $i ?></a>
                     <?php
                 }
             ?>
@@ -162,6 +143,6 @@ $req = $db->query('SELECT * FROM posts');
 
 
 <?php
-$posts->closeCursor();
-$req->closeCursor();
+/*$posts->closeCursor();*/
+
 ?>

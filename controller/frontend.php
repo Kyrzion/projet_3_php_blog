@@ -6,10 +6,10 @@ require_once('model/CommentManager.php');
 
 /*class Post
 {}*/
-    function listPosts()
+    function listPosts($page)
     {
         $postManager = new PostManager();
-        $posts = $postManager->getPosts();
+        $posts = $postManager->pagination($page);
 
         require('view/frontend/listPostsView.php');
     }
@@ -42,12 +42,20 @@ require_once('model/CommentManager.php');
 
     function AddPost($secutitle,$secucontent)
     {
+
       $addpostManager = new PostManager();
       $addpostManager->insertPost($secutitle,$secucontent);
 
       require('view/frontend/admin/addpost.php');
     }
 
+   function delPost($delete)
+    {
+        $postManager = new PostManager();
+        $postManager->delPost($delete);
+
+        require('view/frontend/admin/recap.php');
+    }
 
 /*class links {}*/
 
@@ -70,4 +78,14 @@ require_once('model/CommentManager.php');
   function deletepost()
   {
     require('view/frontend/admin/delete.php');
+  }
+
+/* Pagination */
+ function pagination($page)
+  {
+    $postManager = new PostManager();
+    $posts = $postManager->pagination($page);
+
+
+    require('view/frontend/listPostsView.php');
   }

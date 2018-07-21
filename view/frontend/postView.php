@@ -20,7 +20,7 @@
         </li>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="form.php">Connexion</a>
+          <a class="nav-link" href="index.php?action=login">Connexion</a>
         </li>
       </ul>
     </div>
@@ -37,7 +37,8 @@
         <small>- Une aventure extraordinaire</small>
       </h2>
 
-  <div class="news card mb-4" style="padding:2%";>
+  <div class="news card mb-4">
+    <div class="postbox">
       <h3>
           <?= htmlspecialchars($post['title']) ?>
           <em>le <?= $post['creation_date_fr'] ?></em>
@@ -47,11 +48,12 @@
             <?= htmlspecialchars_decode($post['content']) ?>
         </p>
       </div>
+    </div>
   </div>
     <p><a href="index.php"class="btn btn-primary " > Retour à la page d'accueil</a></p>
   <div class="card mb-4 text-justify" style="width:60%; padding:2%;" >
 
-    <h2 class="text-center text-primary" style="padding:2%";>Commentaires</h2>
+    <h2 class="news text-center text-primary">Commentaires</h2>
 
   <form class="text-center" action="index.php?action=addComment&amp;id=<?= $post['id'] ?>" method="post">
     <div>

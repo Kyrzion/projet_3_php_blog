@@ -26,19 +26,24 @@ if (isset($_GET['action'])) {
             echo 'Erreur : aucun identifiant de billet envoyé';
         }
     }
-    elseif ($_GET['action'] == 'Addpost') {
-        if (isset($_GET['id']) && $_GET['id'] > 0) {
+    elseif ($_GET['action'] == 'AddPost') {
+
             if (!empty($_POST['titleform']) && !empty($_POST['contentform'])) {
-                Addpost($_GET['id'], $_POST['title2'], $_POST['content2']);
+                AddPost( $_POST['titleform'], $_POST['contentform']);
             }
             else {
                 echo 'Erreur : tous les champs ne sont pas remplis !';
             }
-        }
-        else {
-            echo 'Erreur : aucun ID de billet envoyé';
-        }
     }
+
+    elseif ($_GET['action'] == 'delPost'){
+        if (isset($_GET['id']) && $_GET['id'] > 0){
+
+          delPost($_GET['id']);}
+        else{
+          echo 'Erreur : aucun identifiant de billet envoyé. Suppression impossible' ;}
+    }
+
 
 
     elseif ($_GET['action'] == 'login') {
@@ -59,5 +64,15 @@ if (isset($_GET['action'])) {
 
 }
 else {
-    listPosts();
+  $page = 0;
+  if(array_key_exists('page', $_GET))
+  {
+    $page = $_GET['page'];
+  }
+  if
+  (!isset($page))
+  {
+    $page = 0;
+  }
+    pagination($page);
 }

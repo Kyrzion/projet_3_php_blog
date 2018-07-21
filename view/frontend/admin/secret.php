@@ -5,6 +5,7 @@
         <meta charset="utf-8" />
         <title>Administration</title>
         <link href="public/blog-home.css" rel="stylesheet"/>
+        <link href="public/styles.css" rel="stylesheet"/>
         <link href="public/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=apiKey=localhost"></script>
@@ -20,7 +21,7 @@
           <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
               <li class="nav-item">
-                <a class="nav-link" href="../../../index.php">Accueil
+                <a class="nav-link" href="index.php">Accueil
 
                 </a>
               </li>
@@ -57,13 +58,13 @@
     {
         $_SESSION['connect'] = true; ?>
 
-        <h2 class="my-4" style="margin-left:5%;">Administration
+        <h2 class=" title_admin my-4">Administration
           <small>- Modifications possibles</small>
         </h2>
 
-          <a class="btn btn-primary card-body" style="margin: 5% 1% 50% 5%;" href="./index.php?action=writepost"> Ecrire un nouvel article</a>
-          <a class="btn btn-success card-body" style="margin: 5% 1% 50% 5%;" href="./index.php?action=recap"> Modifier un article</a>
-          <a class="btn btn-danger card-body" style="margin: 5% 1% 50% 5%;" href="./index.php?action=recap"> Supprimer un article</a>
+          <a class="button_recap btn btn-primary card-body"  href="./index.php?action=writepost"> Ecrire un nouvel article</a>
+          <a class="button_recap btn btn-success card-body"  href="./index.php?action=recap"> Modifier un article</a>
+          <a class="button_recap btn btn-danger card-body"  href="./index.php?action=recap"> Supprimer un article</a>
 
 
 

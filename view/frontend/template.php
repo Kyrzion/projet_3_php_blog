@@ -4,6 +4,7 @@
         <meta charset="utf-8" />
         <title><?= $title ?></title>
         <link href="public/blog-home.css" rel="stylesheet"/>
+        <link href="public/styles.css" rel="stylesheet"/>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link href="public/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 

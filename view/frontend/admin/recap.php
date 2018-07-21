@@ -19,6 +19,7 @@ $req = $db->query('SELECT * FROM posts');
     <meta charset="utf-8" />
     <title>Administration</title>
     <link href="public/blog-home.css" rel="stylesheet"/>
+    <link href="public/styles.css" rel="stylesheet"/>
     <link href="public/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 </head>
@@ -33,7 +34,7 @@ $req = $db->query('SELECT * FROM posts');
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a class="nav-link" href="../../../index.php">Accueil
+            <a class="nav-link" href="index.php">Accueil
               <span class="sr-only">(current)</span>
             </a>
           </li>
@@ -72,14 +73,16 @@ $req = $db->query('SELECT * FROM posts');
       {?>
 
 
-      <div class="card mb-4" style="margin:1%;padding-left:1%;">
+      <div class="card mb-4">
+        <div class="recap_list">
         <?php
           echo'<p >';
           echo htmlspecialchars($reponse['title']);
           echo'<p >';
-          echo'<a class="btn btn-success" href="modif.php" style="margin-right:1%;"> Modifier</a>';
-          echo'<a class="btn btn-danger" href="./index.php?action=deletepost?ID='.$reponse['id'].'"> Supprimer</a>';
+          echo'<a class="recap_list_button_modif btn btn-success" href="modif.php"> Modifier</a>';
+          echo'<a class="btn btn-danger" href="./index.php?action=delPost&id='.$reponse['id'].'"> Supprimer</a>';
         ?>
+      </div>
         <div class="card-footer text-muted">
           Ecrit le <em> <?= $reponse['creation_date'] ?></em>
         </div>
