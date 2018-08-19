@@ -1,30 +1,20 @@
-
 <?php $title = 'Mon blog'; ?>
-
 <?php ob_start(); ?>
-
-
-<!DOCTYPE html>
-<html>
-<body>
 
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
-      <a class="navbar-brand" href="#">Billet Simple pour l'Alaska</a>
+      <a class="navbar-brand" href="./index.php">Billet Simple pour l'Alaska</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item active">
-          </span><a class="nav-link" href="index.php">Accueil
-              <span class="sr-only">(current)</span>
-            </a>
+            </span><a class="nav-link" href="index.php">Accueil
+                <span class="sr-only">(current)</span> </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Chapitres</a>
-          </li>
-          </li>
           <li class="nav-item">
             <a class="nav-link" href="index.php?action=login">Connexion</a>
           </li>
@@ -43,27 +33,23 @@
           <small>- Une aventure extraordinaire</small>
         </h2>
 
-
-
-
       <!-- Blog Post -->
-	  <?php
+    	  <?php
 
-
-		  while($reponse = $posts->fetch())
-          {?>
+    		  foreach($posts as $reponse)
+       {?>
           <div class="card mb-4">
             <img class="card-img-top" src="public/img/alaska1.jpg" alt="Card image cap">
           <div class="card-body">
           <?php
             echo'<h2 class="card-title text-primary">';
-            echo $reponse['title'];
+            echo $reponse->title();
             echo'</h2>';
 
-          if (strlen($reponse['content']) > 250) {
-            $textmini = substr($reponse['content'], 0, 250). '...';
+          if (strlen($reponse->content()) > 250) {
+            $textmini = substr($reponse->content(), 0, 250). '...';
           } else {
-            $textmini = $reponse['content'];
+            $textmini = $reponse->content();
           }
 
           $textform = str_replace("\r", "<br>",$textmini);
@@ -71,18 +57,16 @@
           echo'<p class="card-text text-justify">';
           echo $textform;
           echo'</p>';
-
             ?>
-			         <a href="index.php?action=post&amp;id=<?= $reponse['id'] ?>" class="btn btn-primary">Lire la suite &rarr;</a>
+			         <a href="index.php?action=post&amp;id=<?= $reponse->id() ?>" class="btn btn-primary">Lire la suite &rarr;</a>
           </div>
           <div class="card-footer text-muted">
-            Ecrit le <em> <?= $reponse['creation_date_fr'] ?></em>
+            Ecrit le <em> <?= $reponse->creationDate(); ?></em>
             <p> par Jean Forteroche</p>
           </div>
         </div>
 		  <?php }
-
-		  ?>
+      ?>
 
 
         <div class="pagination justify-content-center mb-4">

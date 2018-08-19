@@ -44,6 +44,14 @@ if (isset($_GET['action'])) {
           echo 'Erreur : aucun identifiant de billet envoyé. Suppression impossible' ;}
     }
 
+    elseif ($_GET['action'] == 'delComment'){
+        if (isset($_GET['id']) && $_GET['id'] > 0){
+
+          delComment($_GET['id']);}
+        else{
+          echo 'Erreur : aucun identifiant de billet envoyé. Suppression impossible' ;}
+    }
+
 
 
     elseif ($_GET['action'] == 'login') {
@@ -56,12 +64,41 @@ if (isset($_GET['action'])) {
       writepost();
     }
     elseif ($_GET['action'] == 'recap') {
-      recap();
+      $page = 0;
+      if(array_key_exists('page', $_GET))
+      {
+        $page = $_GET['page'];
+      }
+      if
+      (!isset($page))
+      {
+        $page = 0;
+      }
+      recap($page);
+
     }
     elseif ($_GET['action'] == 'deletepost') {
       deletepost();
     }
 
+    elseif ($_GET['action'] == 'modifpost') {
+      modifpost();
+    }
+
+    elseif ($_GET['action'] == 'recapcom') {
+      $page = 0;
+      if(array_key_exists('page', $_GET))
+      {
+        $page = $_GET['page'];
+      }
+      if
+      (!isset($page))
+      {
+        $page = 0;
+      }
+      recapcom($page);
+
+    }
 }
 else {
   $page = 0;

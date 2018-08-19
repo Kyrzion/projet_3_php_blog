@@ -1,4 +1,6 @@
-
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -14,7 +16,7 @@
     <body>
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container">
-          <a class="navbar-brand" href="#">Billet Simple pour l'Alaska</a>
+          <a class="navbar-brand" href="./index.php">Billet Simple pour l'Alaska</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -62,9 +64,15 @@
           <small>- Modifications possibles</small>
         </h2>
 
-          <a class="button_recap btn btn-primary card-body"  href="./index.php?action=writepost"> Ecrire un nouvel article</a>
-          <a class="button_recap btn btn-success card-body"  href="./index.php?action=recap"> Modifier un article</a>
-          <a class="button_recap btn btn-danger card-body"  href="./index.php?action=recap"> Supprimer un article</a>
+          <a class=" btn btn-primary card-body"  href="./index.php?action=writepost"> Ecrire un nouvel article</a>
+          <a class=" btn btn-success card-body"  href="./index.php?action=recap"> Modifier un article</a>
+          <a class=" btn btn-danger card-body"  href="./index.php?action=recap"> Supprimer un article</a>
+
+            <h2 class=" title_admin my-4 ">
+              <small>- Modifications commentaires</small>
+            </h2>
+
+            <a class=" btn btn-warning card-body"  href="./index.php?action=recapcom"> Modérer les commentaires</a>
 
 
 

@@ -4,6 +4,7 @@
 require_once('model/PostManager.php');
 require_once('model/CommentManager.php');
 
+
 /*class Post
 {}*/
     function listPosts($page)
@@ -12,6 +13,7 @@ require_once('model/CommentManager.php');
         $posts = $postManager->pagination($page);
 
         require('view/frontend/listPostsView.php');
+
     }
 
     function post()
@@ -53,6 +55,7 @@ require_once('model/CommentManager.php');
     {
         $postManager = new PostManager();
         $postManager->delPost($delete);
+        $posts = $postManager->recap(0);
 
         require('view/frontend/admin/recap.php');
     }
@@ -67,8 +70,10 @@ require_once('model/CommentManager.php');
   {
     require('view/frontend/admin/secret.php');
   }
-  function recap()
+  function recap($pagerecap)
   {
+    $postManager = new PostManager();
+    $posts = $postManager->recap($pagerecap);
     require('view/frontend/admin/recap.php');
   }
   function writepost()
@@ -79,6 +84,13 @@ require_once('model/CommentManager.php');
   {
     require('view/frontend/admin/delete.php');
   }
+  function modifpost()
+  {
+    $postManager = new PostManager();
+    $post = $postManager->getPost($_GET['id']);
+    
+    require('view/frontend/admin/modif.php');
+  }
 
 /* Pagination */
  function pagination($page)
@@ -86,6 +98,20 @@ require_once('model/CommentManager.php');
     $postManager = new PostManager();
     $posts = $postManager->pagination($page);
 
-
     require('view/frontend/listPostsView.php');
   }
+
+ function recapcom($pagerecap)
+ {
+   $commentManager = new CommentManager();
+   $comments = $commentManager->recapcom($pagerecap);
+   require('view/frontend/admin/recapcom.php');
+ }
+  function delComment($deletecom)
+   {
+       $commentManager = new CommentManager();
+       $commentManager->delComment($deletecom);
+       $comments = $commentManager->recapcom(0);
+
+       require('view/frontend/admin/recapcom.php');
+   }
