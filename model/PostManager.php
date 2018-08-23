@@ -73,16 +73,13 @@ class PostManager extends Manager
         $delete->execute(array(':id' => $postID));
      }
 
-     public function modifPost($postContent)
+     public function modifPost($postID,$postTitle,$postContent)
       {
          $db = $this->dbConnect();
-         $req= $db->prepare('UPDATE title, content FROM posts WHERE id=:id');
-         $req->execute(array($postContent));
-         $posts = $req->fetch();
-         $postModel = new Posts();
-         $postModel->hydrate($posts);
-         echo $req->rowCount() . " Article mis à jour !";
-
-         return $postModel;
+         $req= $db->prepare('UPDATE posts SET title=:title, content=:content WHERE id=:id');
+         $req->bindParam(':title',$postTitle,PDO::PARAM_STR);
+         $req->bindParam(':content',$postContent,PDO::PARAM_STR);
+         $req->bindParam(':id',$postID,PDO::PARAM_INT);
+         $req->execute();
        }
 }

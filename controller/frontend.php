@@ -88,7 +88,16 @@ require_once('model/CommentManager.php');
   {
     $postManager = new PostManager();
     $post = $postManager->getPost($_GET['id']);
-    
+
+    require('view/frontend/admin/modif.php');
+  }
+
+  function savepost($id,$new_title , $new_content)
+  {
+    $postManager = new PostManager();
+    $postManager-> modifpost($id,$new_title,$new_content);
+
+    $post = $postManager->getPost($id);
     require('view/frontend/admin/modif.php');
   }
 

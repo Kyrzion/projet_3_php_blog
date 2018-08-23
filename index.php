@@ -1,6 +1,7 @@
 
 <?php
 require('controller/frontend.php');
+
 if (isset($_GET['action'])) {
     if ($_GET['action'] == 'listPosts') {
         listPosts();
@@ -82,9 +83,24 @@ if (isset($_GET['action'])) {
     }
 
     elseif ($_GET['action'] == 'modifpost') {
-      modifpost();
+      if (isset($_GET['id']) && $_GET['id'] > 0) {
+          modifpost();
+      }
+      else {
+          echo 'Erreur : aucun identifiant de billet envoyé';
+      }
+
     }
 
+elseif ($_GET['action'] == 'savepost') {
+  if (isset($_GET['id']) && isset($_POST['new_title']) && isset($_POST['new_content'])) {
+      savepost($_GET['id'] , $_POST['new_title'] , $_POST['new_content']);
+  }
+  else {
+      echo 'Erreur : aucun identifiant de billet envoyé';
+  }
+
+}
     elseif ($_GET['action'] == 'recapcom') {
       $page = 0;
       if(array_key_exists('page', $_GET))

@@ -43,18 +43,14 @@
         <div class="row">
           <div class="col-md-8">
              <h3>Modifiez un billet à l'aide des champs ci-dessous :</h3>
-             <?php
 
-               foreach($posts as $reponse)
-            {?>
-             <form method="POST">
-                 <input type="hidden" name="id" value="<?php $reponse->id() ?>"/>
-                 <p><label for="new_title">Titre :</label><input type="text" name="new_title"></p>
-                 <p><label for="new_content">Saisissez l'article modifié :</label><textarea name="new_content"> <?= $reponse->content()?> </textarea></p>
+             <form action="./index.php?action=savepost&id=<?=$post->id()?>" method="POST">
+                 <input type="hidden" name="id" value="<?= $post->id() ?>"/>
+                 <p><label for="new_title">Titre :</label><input type="text" name="new_title" value="<?= $post->title()?>"/></p>
+                 <p><label for="new_content">Saisissez l'article modifié :</label><textarea name="new_content"> <?= $post->content()?> </textarea></p>
                  <p><input type="submit"></p>
-
              </form>
-           <?php }?>
+
            </div>
          </div>
        </div>
