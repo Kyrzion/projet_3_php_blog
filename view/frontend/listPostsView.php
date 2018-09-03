@@ -36,20 +36,20 @@
       <!-- Blog Post -->
     	  <?php
 
-    		  foreach($posts as $reponse)
+    		  foreach($posts as $reply)
        {?>
           <div class="card mb-4">
             <img class="card-img-top" src="public/img/alaska1.jpg" alt="Card image cap">
           <div class="card-body">
           <?php
             echo'<h2 class="card-title text-primary">';
-            echo $reponse->title();
+            echo $reply->title();
             echo'</h2>';
 
-          if (strlen($reponse->content()) > 250) {
-            $textmini = substr($reponse->content(), 0, 250). '...';
+          if (strlen($reply->content()) > 250) {
+            $textmini = substr($reply->content(), 0, 250). '...';
           } else {
-            $textmini = $reponse->content();
+            $textmini = $reply->content();
           }
 
           $textform = str_replace("\r", "<br>",$textmini);
@@ -58,10 +58,10 @@
           echo $textform;
           echo'</p>';
             ?>
-			         <a href="index.php?action=post&amp;id=<?= $reponse->id() ?>" class="btn btn-primary">Lire la suite &rarr;</a>
+			         <a href="index.php?action=post&amp;id=<?= $reply->id() ?>" class="btn btn-primary">Lire la suite &rarr;</a>
           </div>
           <div class="card-footer text-muted">
-            Ecrit le <em> <?= $reponse->creationDate(); ?></em>
+            Ecrit le <em> <?= $reply->creationDate(); ?></em>
             <p> par Jean Forteroche</p>
           </div>
         </div>

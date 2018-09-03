@@ -1,6 +1,3 @@
-<?php
-session_start();
-?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -35,7 +32,7 @@ session_start();
                 <a class="nav-link" href="./index.php?action=dashboard">Administration</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Déconnexion</a>
+                <a class="nav-link" href="./index.php?action=disconnect">Déconnexion</a>
               </li>
             </ul>
           </div>
@@ -43,47 +40,26 @@ session_start();
       </nav>
 
       <div class="container">
-        <h2 class="my-4 text-center">Bienvenue sur l'administration
-          <small>de votre blog</small>
-        </h2>
+        <h2 class="my-4 text-center">Bienvenue sur l'administration de votre blog </h2>
 
 
         <div class="row">
 
           <!-- Blog Entries Column -->
           <div class="col-md-8">
-
-        <?php
-        $toto_hash = password_hash("toto",PASSWORD_BCRYPT);
-
-        if (password_verify($_POST["mot_de_passe"] ,$toto_hash)==true || $_SESSION['connect'] == true)
-    {
-        $_SESSION['connect'] = true; ?>
-
         <h2 class=" title_admin my-4">Administration
           <small>- Modifications possibles</small>
         </h2>
 
           <a class=" btn btn-primary card-body"  href="./index.php?action=writepost"> Ecrire un nouvel article</a>
-          <a class=" btn btn-success card-body"  href="./index.php?action=recap"> Modifier un article</a>
-          <a class=" btn btn-danger card-body"  href="./index.php?action=recap"> Supprimer un article</a>
+          <a class=" btn btn-success card-body"  href="./index.php?action=summary"> Modifier un article</a>
+          <a class=" btn btn-danger card-body"  href="./index.php?action=summary"> Supprimer un article</a>
 
             <h2 class=" title_admin my-4 ">
               <small>- Modifications commentaires</small>
             </h2>
 
-            <a class=" btn btn-warning card-body"  href="./index.php?action=recapcom"> Modérer les commentaires</a>
-
-
-
-        <?php
-    }
-    else
-    {
-        echo '<p>Mot de passe incorrect</p>';
-    }
-    ?>
-
+            <a class=" btn btn-warning card-body"  href="./index.php?action=summarycom"> Modérer les commentaires</a>
 
       </div>
     </div>

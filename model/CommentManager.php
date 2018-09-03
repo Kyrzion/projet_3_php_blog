@@ -28,10 +28,10 @@ class CommentManager extends Manager
         return $affectedLines;
     }
 
-    public function recapcom($pagerecap)
+    public function summarycom($pagesummary)
     {
       $db = $this->dbConnect();
-      $limitindex = $pagerecap*5;
+      $limitindex = $pagesummary*5;
       $req = $db->prepare("SELECT id, author, comment, DATE_FORMAT(comment_date, '%d/%m/%Y à %Hh%imin') AS comment_date_fr FROM comments ORDER BY id DESC LIMIT :index,10");
       $req->bindParam(':index',$limitindex,PDO::PARAM_INT);
       $req->execute();

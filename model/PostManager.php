@@ -50,11 +50,11 @@ class PostManager extends Manager
       return $posts;
     }
 
-    public function recap($pagerecap)
+    public function summary($pagesummary)
     {
       $db = $this->dbConnect();
-      $limitindex = $pagerecap*5;
-      $req = $db->prepare("SELECT id, title, content, DATE_FORMAT(creation_date, '%d/%m/%Y à %Hh%imin%ss') AS creation_date_fr FROM posts ORDER BY title DESC LIMIT :index,10");
+      $limitindex = $pagesummary*5;
+      $req = $db->prepare("SELECT id, title, content, DATE_FORMAT(creation_date, '%d/%m/%Y à %Hh%imin%ss') AS creation_date_fr FROM posts ORDER BY creation_date DESC LIMIT :index,10");
       $req->bindParam(':index',$limitindex,PDO::PARAM_INT);
       $req->execute();
       $posts=array();

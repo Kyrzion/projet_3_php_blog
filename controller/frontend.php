@@ -55,34 +55,48 @@ require_once('model/CommentManager.php');
     {
         $postManager = new PostManager();
         $postManager->delPost($delete);
-        $posts = $postManager->recap(0);
+        $posts = $postManager->summary(0);
 
-        require('view/frontend/admin/recap.php');
+        require('view/frontend/admin/summary.php');
     }
 
 /*class links {}*/
 
   function login()
   {
-    require('view/frontend/form.php');
+    require('view/frontend/login.php');
   }
   function dashboard()
   {
-    require('view/frontend/admin/secret.php');
+    require('view/frontend/admin/dashboard.php');
   }
-  function recap($pagerecap)
+  function connect()
+  {
+    $toto_hash = password_hash("toto",PASSWORD_BCRYPT);
+    if (password_verify($_POST["password"] ,$toto_hash)==true || $_SESSION['connect'] == true)
+    {
+    $_SESSION['connect'] = true;
+    header ('location:./index.php?action=dashboard');
+    }
+    else {
+
+    }
+  }
+  function summary($pagesummary)
   {
     $postManager = new PostManager();
-    $posts = $postManager->recap($pagerecap);
-    require('view/frontend/admin/recap.php');
+    $posts = $postManager->summary($pagesummary);
+    require('view/frontend/admin/summary.php');
   }
   function writepost()
   {
     require('view/frontend/admin/addpost.php');
   }
-  function deletepost()
+
+  function disconnect()
   {
-    require('view/frontend/admin/delete.php');
+    $_SESSION['connect'] = false;
+    header ('location:./index.php');
   }
   function modifpost()
   {
@@ -110,17 +124,17 @@ require_once('model/CommentManager.php');
     require('view/frontend/listPostsView.php');
   }
 
- function recapcom($pagerecap)
+ function summarycom($pagesummary)
  {
    $commentManager = new CommentManager();
-   $comments = $commentManager->recapcom($pagerecap);
-   require('view/frontend/admin/recapcom.php');
+   $comments = $commentManager->summarycom($pagesummary);
+   require('view/frontend/admin/summarycom.php');
  }
   function delComment($deletecom)
    {
        $commentManager = new CommentManager();
        $commentManager->delComment($deletecom);
-       $comments = $commentManager->recapcom(0);
+       $comments = $commentManager->summarycom(0);
 
-       require('view/frontend/admin/recapcom.php');
+       require('view/frontend/admin/summarycom.php');
    }

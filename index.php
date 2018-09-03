@@ -1,4 +1,4 @@
-
+<?php session_start();?>
 <?php
 require('controller/frontend.php');
 
@@ -59,12 +59,30 @@ if (isset($_GET['action'])) {
       login();
     }
     elseif ($_GET['action'] == 'dashboard') {
-      dashboard();
+      if (array_key_exists('connect',$_SESSION) && $_SESSION['connect'] == true)
+      {
+          dashboard();
+      }
+      else {
+        header ('location:./index.php');
+      }
+    }
+    elseif ($_GET['action'] == 'connect') {
+      connect();
+    }
+    elseif ($_GET['action'] == 'disconnect') {
+      disconnect();
     }
     elseif ($_GET['action'] == 'writepost') {
+      if (array_key_exists('connect',$_SESSION) && $_SESSION['connect'] == true)
+      {
       writepost();
+      }
+      else {
+        header ('location:./index.php');
+      }
     }
-    elseif ($_GET['action'] == 'recap') {
+    elseif ($_GET['action'] == 'summary') {
       $page = 0;
       if(array_key_exists('page', $_GET))
       {
@@ -75,21 +93,32 @@ if (isset($_GET['action'])) {
       {
         $page = 0;
       }
-      recap($page);
+      summary($page);
 
     }
     elseif ($_GET['action'] == 'deletepost') {
+      if (array_key_exists('connect',$_SESSION) && $_SESSION['connect'] == true)
+      {
       deletepost();
+      }
+      else {
+        header ('location:./index.php');
+      }
     }
 
     elseif ($_GET['action'] == 'modifpost') {
-      if (isset($_GET['id']) && $_GET['id'] > 0) {
-          modifpost();
+      if (array_key_exists('connect',$_SESSION) && $_SESSION['connect'] == true)
+      {
+          if (isset($_GET['id']) && $_GET['id'] > 0) {
+              modifpost();
+          }
+          else {
+              echo 'Erreur : aucun identifiant de billet envoyé';
+          }
       }
       else {
-          echo 'Erreur : aucun identifiant de billet envoyé';
+        header ('location:./index.php');
       }
-
     }
 
 elseif ($_GET['action'] == 'savepost') {
@@ -101,7 +130,7 @@ elseif ($_GET['action'] == 'savepost') {
   }
 
 }
-    elseif ($_GET['action'] == 'recapcom') {
+    elseif ($_GET['action'] == 'summarycom') {
       $page = 0;
       if(array_key_exists('page', $_GET))
       {
@@ -112,7 +141,7 @@ elseif ($_GET['action'] == 'savepost') {
       {
         $page = 0;
       }
-      recapcom($page);
+      summarycom($page);
 
     }
 }

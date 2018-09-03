@@ -46,28 +46,26 @@ session_start();
           <a class="btn btn-primary" href="./index.php?action=writepost">Ecrire un nouvel article</a>
         </h4>
         <h2 class="my-4 ">Administration
-          <small>- Récapitulatif des commentaires</small>
+          <small>- Récapitulatif des articles</small>
         </h2>
         <a class="btn btn-secondary"href="./index.php?action=dashboard"> Revenir au panneau d'administration</a>
       <p></p>
 
       <?php
-        foreach($comments as $reponse)
+        foreach($posts as $reply)
       {?>
       <div class="card mb-4">
         <div class="recap_list">
         <?php
           echo'<p >';
-          echo '<h5>'.$reponse->author().'</h5>';
-          echo '<hr size=15 width=60% align=left >';
+          echo '<h5>'.$reply->title().'</h5>';
           echo'<p >';
-          echo $reponse->comment();
-          echo'<p >';
-          echo'<a class="btn btn-danger" href="./index.php?action=delComment&id='.$reponse->id().'"> Supprimer</a>';
+          echo'<a class="recap_list_button_modif btn btn-success" href="./index.php?action=modifpost&id='.$reply->id().'"> Modifier</a>';
+          echo'<a class="btn btn-danger" href="./index.php?action=delPost&id='.$reply->id().'"> Supprimer</a>';
         ?>
       </div>
         <div class="card-footer text-muted">
-          Ecrit le <em> <?= $reponse->commentDate(); ?></em>
+          Ecrit le <em> <?= $reply->creationDate(); ?></em>
         </div>
       </div>
         <?php }
@@ -83,7 +81,7 @@ session_start();
             for($i=1; $i<$nb_pages+1; $i++)
             {
                 ?>
-                    <a class="btn btn-primary" href="./index.php?action=recapcom&page=<?php echo $i-1 ?>"> <?php echo $i ?></a>
+                    <a class="btn btn-primary" href="./index.php?action=summary&page=<?php echo $i-1 ?>"> <?php echo $i ?></a>
                 <?php
             }
         ?>
