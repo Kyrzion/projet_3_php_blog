@@ -73,6 +73,9 @@ if (isset($_GET['action'])) {
     elseif ($_GET['action'] == 'disconnect') {
       disconnect();
     }
+    elseif ($_GET['action'] == 'summaryreport') {
+      summaryreport($report);
+    }
     elseif ($_GET['action'] == 'writepost') {
       if (array_key_exists('connect',$_SESSION) && $_SESSION['connect'] == true)
       {
@@ -130,6 +133,11 @@ elseif ($_GET['action'] == 'savepost') {
   }
 
 }
+
+  elseif ($_GET['action'] == 'reportcom') {
+    reportcom($_GET['id'],$_GET['postID']);
+  }
+
     elseif ($_GET['action'] == 'summarycom') {
       $page = 0;
       if(array_key_exists('page', $_GET))

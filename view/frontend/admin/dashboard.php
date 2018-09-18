@@ -60,6 +60,7 @@
             </h2>
 
             <a class=" btn btn-warning card-body"  href="./index.php?action=summarycom"> Modérer les commentaires</a>
+              <a class=" btn btn-warning card-body"  href="./index.php?action=summaryreport"> Commentaires signalés</a>
 
       </div>
     </div>

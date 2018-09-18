@@ -50,4 +50,28 @@ class CommentManager extends Manager
         $deletecom = $db->prepare('DELETE FROM comments WHERE id=:id');
         $deletecom->execute(array(':id' => $commentID));
      }
+
+     public function reportComment($reportID)
+     {
+       $db = $this->dbConnect();
+       $req = "INSERT INTO report (comment_id, report_date) VALUES (:id, now())";
+       $query = $db->prepare($req);
+       $query->bindParam(':id', $reportID);
+       $query->execute(array(':id' => $reportID));
+     }
+
+     public function summaryreport($report)
+     {
+        $db = $this->dbConnect();
+        $reportsummary = $db->prepare("SELECT id, comment_id, report_date FROM report ORDER BY comment_date DESC");
+        $reportsummary ->execute();
+        $report=array();
+        while($dbreport=$reportsummary->fetch()){
+          $commentModel = new Comments();
+          $commentModel->hydrate($dbreport);
+          $report[]=$commentModel;
+        }
+        return $report;
+
+     }
 }

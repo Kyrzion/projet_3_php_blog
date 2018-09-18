@@ -138,3 +138,20 @@ require_once('model/CommentManager.php');
 
        require('view/frontend/admin/summarycom.php');
    }
+
+  function reportcom($reportComment,$postID)
+    {
+       $commentManager = new CommentManager();
+       $postManager = new PostManager();
+       $comments = $commentManager->getComments($postID);
+       $commentManager->reportComment($reportComment);
+       $post=$postManager->getPost($postID);
+       require('view/frontend/postView.php');
+    }
+
+  function summaryreport($report)
+    {
+      $commentManager = new CommentManager();
+      $comments = $commentManager->summaryreport($report);
+      require('view/frontend/admin/summaryreport.php');
+    }
