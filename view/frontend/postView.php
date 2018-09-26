@@ -77,7 +77,7 @@
             <?php
             foreach($comments as $reponse)
             {?>
-                <p><strong><?= $reponse->author();?></strong> le <?= $reponse->commentDate();?> &nbsp; &nbsp; &nbsp; <?php echo '<a class="btn btn-danger" href="./index.php?action=reportcom&amp;id='.$reponse->id().'&amp;postID='.$post->id().'">Signaler</a>'?></p>
+                <p><strong><?= $reponse->author();?></strong> le <?= $reponse->commentDate_fr();?> &nbsp; &nbsp; &nbsp; <?php echo '<a class="btn btn-danger" href="./index.php?action=reportcom&amp;id='.$reponse->id().'&amp;postID='.$post->id().'">Signaler</a>'?></p>
                 <p><?= nl2br(htmlspecialchars($reponse->comment()))?></p>
             <?php
             }

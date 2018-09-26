@@ -4,8 +4,10 @@
   private $_postId;
   private $_author;
   private $_comment;
-  private $_commentDate;
-
+  private $_commentDate_fr;
+  private $_reportID;
+  private $_report_commentId;
+  private $_report_reportDate;
   public function hydrate(array $donnees)
   {
     foreach ($donnees as $key => $value)
@@ -26,7 +28,10 @@
   function postId() { return $this->_postId; }
   function author() { return $this->_author; }
   function comment() { return $this->_comment; }
-  function commentDate() { return $this->_commentDate; }
+  function commentDate_fr() { return $this->_commentDate_fr; }
+  function reportID() { return $this->_reportID; }
+  function report_commentId() { return $this->_report_commentId; }
+  function report_reportDate() { return $this->_report_reportDate; }
 
   function setId($id)
   {
@@ -49,12 +54,25 @@
 
   function setComment($comment)
   {
-      $this->_comment = $comment;
+    $this->_comment = $comment;
   }
 
-  function setComment_date_fr($commentDate)
+  function setCommentDate_fr($commentDate_fr)
   {
-    $this->_commentDate = $commentDate;
+    $this->_commentDate_fr = $commentDate_fr;
+  }
+  function setreportID($reportID)
+  {
+    $this->_reportID = (int) $reportID;
   }
 
+  function setReport_commentId($report_commentId)
+  {
+    $this->_report_commentId = (int) $report_commentId;
+  }
+
+  function setReport_reportDate($report_reportDate)
+  {
+    $this->_report_reportDate = $report_reportDate;
+  }
 }

@@ -48,56 +48,71 @@
         </h2>
         <a class="btn btn-secondary"href="./index.php?action=dashboard"> Revenir au panneau d'administration</a>
       <p></p>
-
-      <?php
-        foreach($comments as $reply)
-      {?>
-      <div class="card mb-4">
-        <div class="recap_list">
+        <style>
+            .color{
+              background-color: white;
+            }
+            .colorreport {
+                background-color:#f9c7ac;
+            }
+        </style>
         <?php
-          echo'<p >';
-          echo '<h5>'.$reply->author().'</h5>';
-          echo '<hr size=15 width=60% align=left >';
-          echo'<p >';
-          echo $reply->comment();
-          echo'<p >';
-          echo'<a class="btn btn-danger" href="./index.php?action=delComment&id='.$reply->id().'"> Supprimer</a>';
-        ?>
-      </div>
-        <div class="card-footer text-muted">
-          Ecrit le <em> <?= $reply->commentDate(); ?></em>
+          foreach($comments as $reply)
+        {
+          if($reply->reportID() !== null && $reply->reportID() > 0){
+            $color='colorreport';
+            echo'Commentaire signalé le'.$reply->Report_reportDate();
+            echo'<a class="btn btn-danger" href="./index.php?action=delReport&id='.$reply->reportID().'"> Supprimer le signalement</a>';
+          }
+          else{
+            $color='color';
+          }
+          ?>
+        <div class="card mb-4">
+          <div class="recap_list <?= $color;?>">
+            <p class="<?= $color;?>"></p>
+            <p>
+            <?php echo '<h5>'.$reply->author().'</h5>';?>
+            <?php echo '<hr size=15 width=60% align=left >';?>
+            <?php echo'<p >';?>
+            <?php echo $reply->comment();?>
+            <?php echo'<p >';?>
+            <?php echo'<a class="btn btn-danger" href="./index.php?action=delComment&id='.$reply->id().'"> Supprimer</a>';?>
+          </div>
+          <div class="card-footer text-muted">
+            Ecrit le <em><?= $reply->CommentDate_fr();?></em>
+
+          </div>
+        </div>
+          <?php }?>
         </div>
       </div>
-        <?php }
-        ?>
+      <div class="pagination justify-content-center mb-4">
+        <div class="page-item">
+          <?php
+              $nb_articles=15; // Connaitre le nombre de resultats
+              $nb_pages=ceil($nb_articles/10); // Divisé par le nombre de pages
+              echo  'Page : ';
+              for($i=1; $i<$nb_pages+1; $i++)
+              {
+                  ?>
+                      <a class="btn btn-primary" href="./index.php?action=summarycom&page=<?php echo $i-1 ?>"> <?php echo $i ?></a>
+                  <?php
+              }
+          ?>
+        </div>
       </div>
     </div>
-    <div class="pagination justify-content-center mb-4">
-      <div class="page-item">
-        <?php
-            $nb_articles=15; // Connaitre le nombre de resultats
-            $nb_pages=ceil($nb_articles/10); // Divisé par le nombre de pages
-            echo  'Page : ';
-            for($i=1; $i<$nb_pages+1; $i++)
-            {
-                ?>
-                    <a class="btn btn-primary" href="./index.php?action=summarycom&page=<?php echo $i-1 ?>"> <?php echo $i ?></a>
-                <?php
-            }
-        ?>
+    <!-- /.row -->
+    </div>
+    <footer class="py-5 bg-dark">
+      <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; BERTET Théo - 2018</p>
       </div>
-    </div>
-  </div>
-  <!-- /.row -->
-  </div>
-  <footer class="py-5 bg-dark">
-    <div class="container">
-      <p class="m-0 text-center text-white">Copyright &copy; BERTET Théo - 2018</p>
-    </div>
-    <!-- /.container -->
-  </footer>
-  <!-- Bootstrap core JavaScript -->
-  <script src="public/vendor/jquery/jquery.min.js"></script>
-  <script src="public/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    </body>
-  </html>
+      <!-- /.container -->
+    </footer>
+    <!-- Bootstrap core JavaScript -->
+    <script src="public/vendor/jquery/jquery.min.js"></script>
+    <script src="public/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+      </body>
+    </html>

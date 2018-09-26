@@ -45,6 +45,15 @@ if (isset($_GET['action'])) {
           echo 'Erreur : aucun identifiant de billet envoyé. Suppression impossible' ;}
     }
 
+    elseif ($_GET['action'] == 'delReport'){
+        if (isset($_GET['id']) && $_GET['id'] > 0){
+
+          delReport($_GET['id']);}
+        else{
+          echo 'Erreur : aucun identifiant de signalement envoyé. Suppression impossible' ;}
+
+    }
+
     elseif ($_GET['action'] == 'delComment'){
         if (isset($_GET['id']) && $_GET['id'] > 0){
 
@@ -54,9 +63,11 @@ if (isset($_GET['action'])) {
     }
 
 
-
     elseif ($_GET['action'] == 'login') {
       login();
+    }
+    elseif ($_GET['action'] == 'listChapters') {
+      listChapters();
     }
     elseif ($_GET['action'] == 'dashboard') {
       if (array_key_exists('connect',$_SESSION) && $_SESSION['connect'] == true)
@@ -67,15 +78,17 @@ if (isset($_GET['action'])) {
         header ('location:./index.php');
       }
     }
+
     elseif ($_GET['action'] == 'connect') {
       connect();
     }
+
     elseif ($_GET['action'] == 'disconnect') {
       disconnect();
     }
-    elseif ($_GET['action'] == 'summaryreport') {
-      summaryreport($report);
-    }
+
+
+
     elseif ($_GET['action'] == 'writepost') {
       if (array_key_exists('connect',$_SESSION) && $_SESSION['connect'] == true)
       {
@@ -85,6 +98,7 @@ if (isset($_GET['action'])) {
         header ('location:./index.php');
       }
     }
+
     elseif ($_GET['action'] == 'summary') {
       $page = 0;
       if(array_key_exists('page', $_GET))
@@ -108,6 +122,8 @@ if (isset($_GET['action'])) {
         header ('location:./index.php');
       }
     }
+
+
 
     elseif ($_GET['action'] == 'modifpost') {
       if (array_key_exists('connect',$_SESSION) && $_SESSION['connect'] == true)
@@ -135,7 +151,11 @@ elseif ($_GET['action'] == 'savepost') {
 }
 
   elseif ($_GET['action'] == 'reportcom') {
-    reportcom($_GET['id'],$_GET['postID']);
+    if (isset($_GET['id']) && $_GET['id'] > 0){
+    reportcom($_GET['id'],$_GET['postID']);}
+    else {
+      echo'test';
+    }
   }
 
     elseif ($_GET['action'] == 'summarycom') {

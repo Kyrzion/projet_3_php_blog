@@ -82,4 +82,15 @@ class PostManager extends Manager
          $req->bindParam(':id',$postID,PDO::PARAM_INT);
          $req->execute();
        }
+
+      public function listChapters($id)
+      {
+          $db = $this->dbConnect();
+          $req = $db->prepare('SELECT id, title FROM posts WHERE id = ?');
+          $req->execute(array($id));
+          $posts = $req->fetch();
+          $postModel = new Posts();
+          $postModel->hydrate($posts);
+          return $postModel;
+      }
 }

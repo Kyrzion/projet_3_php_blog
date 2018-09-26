@@ -1,6 +1,7 @@
 <?php
 require_once("model/Manager.php");
 require_once('model/Comments.php');
+require_once('model/Report.php');
 
 class CommentManager extends Manager
 {
@@ -23,8 +24,6 @@ class CommentManager extends Manager
         $db = $this->dbConnect();
         $comments = $db->prepare('INSERT INTO comments(post_id, author, comment, comment_date) VALUES(?, ?, ?, NOW())');
         $affectedLines = $comments->execute(array($postId, $author, $comment));
-
-
         return $affectedLines;
     }
 
@@ -32,7 +31,7 @@ class CommentManager extends Manager
     {
       $db = $this->dbConnect();
       $limitindex = $pagesummary*5;
-      $req = $db->prepare("SELECT id, author, comment, DATE_FORMAT(comment_date, '%d/%m/%Y à %Hh%imin') AS comment_date_fr FROM comments ORDER BY id DESC LIMIT :index,10");
+      $req = $db->prepare("SELECT report.id AS reportID, comments.id, comments.comment, comments.author, comments.comment_date FROM comments LEFT JOIN report ON report.comment_id = comments.id ORDER BY report.report_date DESC LIMIT :index,10");
       $req->bindParam(':index',$limitindex,PDO::PARAM_INT);
       $req->execute();
       $comments=array();
@@ -51,27 +50,20 @@ class CommentManager extends Manager
         $deletecom->execute(array(':id' => $commentID));
      }
 
+     public function delReport($reportID)
+      {
+         $db = $this->dbConnect();
+         $deletereport = $db->prepare('DELETE FROM report WHERE id=:id');
+         $deletereport->execute(array(':id' => $reportID));
+      }
+
      public function reportComment($reportID)
      {
        $db = $this->dbConnect();
-       $req = "INSERT INTO report (comment_id, report_date) VALUES (:id, now())";
+       $req = 'REPLACE INTO report SET comment_id=:id, report_date=now()';
        $query = $db->prepare($req);
        $query->bindParam(':id', $reportID);
        $query->execute(array(':id' => $reportID));
      }
 
-     public function summaryreport($report)
-     {
-        $db = $this->dbConnect();
-        $reportsummary = $db->prepare("SELECT id, comment_id, report_date FROM report ORDER BY comment_date DESC");
-        $reportsummary ->execute();
-        $report=array();
-        while($dbreport=$reportsummary->fetch()){
-          $commentModel = new Comments();
-          $commentModel->hydrate($dbreport);
-          $report[]=$commentModel;
-        }
-        return $report;
-
-     }
 }

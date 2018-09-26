@@ -4,9 +4,6 @@
 require_once('model/PostManager.php');
 require_once('model/CommentManager.php');
 
-
-/*class Post
-{}*/
     function listPosts($page)
     {
         $postManager = new PostManager();
@@ -65,6 +62,12 @@ require_once('model/CommentManager.php');
   function login()
   {
     require('view/frontend/login.php');
+  }
+  function listChapters()
+  {
+    $postManager = new PostManager();
+    $posts = $postManager->listChapters($_GET['id']);
+    require('view/frontend/listChapters.php');
   }
   function dashboard()
   {
@@ -135,9 +138,16 @@ require_once('model/CommentManager.php');
        $commentManager = new CommentManager();
        $commentManager->delComment($deletecom);
        $comments = $commentManager->summarycom(0);
-
        require('view/frontend/admin/summarycom.php');
    }
+
+   function delReport($deletereport)
+    {
+        $commentManager = new CommentManager();
+        $commentManager->delReport($deletereport);
+        $comments = $commentManager->summarycom(0);
+        require('view/frontend/admin/summarycom.php');
+    }
 
   function reportcom($reportComment,$postID)
     {
@@ -153,5 +163,5 @@ require_once('model/CommentManager.php');
     {
       $commentManager = new CommentManager();
       $comments = $commentManager->summaryreport($report);
-      require('view/frontend/admin/summaryreport.php');
+      require('view/frontend/admin/summarycom.php');
     }
