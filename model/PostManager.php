@@ -83,14 +83,19 @@ class PostManager extends Manager
          $req->execute();
        }
 
-      public function listChapters($id)
+      public function listChapters($pagesummary)
       {
-          $db = $this->dbConnect();
-          $req = $db->prepare('SELECT id, title FROM posts WHERE id = ?');
-          $req->execute(array($id));
-          $posts = $req->fetch();
+        $db = $this->dbConnect();
+        $limitindex = $pagesummary*5;
+        $req = $db->prepare("SELECT id, title, content, DATE_FORMAT(creation_date, '%d/%m/%Y à %Hh%imin%ss') AS creation_date_fr FROM posts ORDER BY creation_date DESC LIMIT :index,15");
+        $req->bindParam(':index',$limitindex,PDO::PARAM_INT);
+        $req->execute();
+        $posts=array();
+        while($dbPost=$req->fetch()){
           $postModel = new Posts();
-          $postModel->hydrate($posts);
-          return $postModel;
+          $postModel->hydrate($dbPost);
+          $posts[]=$postModel;
+        }
+        return $posts;
       }
 }

@@ -25,7 +25,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Chapitres</a>
+            <a class="nav-link" href="index.php?action=listChapters">Chapitres</a>
           </li>
           <li class="nav-item active">
             <a class="nav-link" href="./index.php?action=dashboard">Administration</a>
@@ -90,8 +90,8 @@
       <div class="pagination justify-content-center mb-4">
         <div class="page-item">
           <?php
-              $nb_articles=15; // Connaitre le nombre de resultats
-              $nb_pages=ceil($nb_articles/10); // Divisé par le nombre de pages
+              $nb_comment=20; // Connaitre le nombre de resultats
+              $nb_pages=ceil($nb_comment/10); // Divisé par le nombre de pages
               echo  'Page : ';
               for($i=1; $i<$nb_pages+1; $i++)
               {

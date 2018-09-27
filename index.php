@@ -67,7 +67,17 @@ if (isset($_GET['action'])) {
       login();
     }
     elseif ($_GET['action'] == 'listChapters') {
-      listChapters();
+      $page = 0;
+      if(array_key_exists('page', $_GET))
+      {
+        $page = $_GET['page'];
+      }
+      if
+      (!isset($page))
+      {
+        $page = 0;
+      }
+      listChapters($page);
     }
     elseif ($_GET['action'] == 'dashboard') {
       if (array_key_exists('connect',$_SESSION) && $_SESSION['connect'] == true)

@@ -14,7 +14,7 @@
                 <span class="sr-only">(current)</span> </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Chapitres</a>
+            <a class="nav-link" href="index.php?action=listChapters">Chapitres</a>
           <li class="nav-item">
             <a class="nav-link" href="index.php?action=login">Connexion</a>
           </li>

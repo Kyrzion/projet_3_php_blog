@@ -63,10 +63,10 @@ require_once('model/CommentManager.php');
   {
     require('view/frontend/login.php');
   }
-  function listChapters()
+  function listChapters($pagesummary)
   {
     $postManager = new PostManager();
-    $posts = $postManager->listChapters($_GET['id']);
+    $posts = $postManager->listChapters($pagesummary);
     require('view/frontend/listChapters.php');
   }
   function dashboard()

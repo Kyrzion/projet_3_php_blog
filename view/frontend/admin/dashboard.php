@@ -25,7 +25,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Chapitres</a>
+                <a class="nav-link" href="index.php?action=listChapters">Chapitres</a>
               </li>
               </li>
               <li class="nav-item active">
@@ -56,11 +56,11 @@
           <a class=" btn btn-danger card-body"  href="./index.php?action=summary"> Supprimer un article</a>
 
             <h2 class=" title_admin my-4 ">
-              <small>- Modifications commentaires</small>
+              <small>- Modération des commentaires</small>
             </h2>
 
             <a class=" btn btn-warning card-body"  href="./index.php?action=summarycom"> Modérer les commentaires</a>
-              
+
 
       </div>
     </div>

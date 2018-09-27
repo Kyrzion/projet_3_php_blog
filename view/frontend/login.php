@@ -21,7 +21,7 @@
                 <a class="nav-link" href="index.php">Accueil</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Chapitres</a>
+                <a class="nav-link" href="index.php?action=listChapters">Chapitres</a>
               </li>
               <li class="nav-item active">
                 <a class="nav-link" href="index.php?action=login">Connexion</a>

@@ -30,7 +30,7 @@ class CommentManager extends Manager
     public function summarycom($pagesummary)
     {
       $db = $this->dbConnect();
-      $limitindex = $pagesummary*5;
+      $limitindex = $pagesummary*10;
       $req = $db->prepare("SELECT report.id AS reportID, comments.id, comments.comment, comments.author, comments.comment_date FROM comments LEFT JOIN report ON report.comment_id = comments.id ORDER BY report.report_date DESC LIMIT :index,10");
       $req->bindParam(':index',$limitindex,PDO::PARAM_INT);
       $req->execute();
