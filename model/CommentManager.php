@@ -10,13 +10,13 @@ class CommentManager extends Manager
         $db = $this->dbConnect();
         $comments = $db->prepare("SELECT id, author, comment, DATE_FORMAT(comment_date, '%d/%m/%Y à %Hh%imin') AS comment_date_fr FROM comments WHERE post_id = ? ORDER BY comment_date DESC");
         $comments->execute(array($postId));
-        $posts=array();
+        $comments=array();
         while($dbComment=$comments->fetch()){
           $CommentsModel = new Comments();
           $CommentsModel->hydrate($dbComment);
-          $posts[]=$CommentsModel;
+          $comments[]=$CommentsModel;
         }
-        return $posts;
+        return $comments;
     }
 
     public function postComment($postId, $author, $comment)
@@ -31,13 +31,13 @@ class CommentManager extends Manager
     {
       $db = $this->dbConnect();
       $limitindex = $pagesummary*10;
-      $req = $db->prepare("SELECT report.id AS reportID, comments.id, comments.comment, comments.author, comments.comment_date FROM comments LEFT JOIN report ON report.comment_id = comments.id ORDER BY report.report_date DESC LIMIT :index,10");
+      $req = $db->prepare("SELECT report.id AS reportID, DATE_FORMAT(report.report_date, '%d/%m/%Y à %Hh%imin') AS report_reportDate, comments.id, comments.comment, comments.author, DATE_FORMAT(comments.comment_date, '%d/%m/%Y à %Hh%imin') AS commentDate_fr FROM comments LEFT JOIN report ON report.comment_id = comments.id ORDER BY report.report_date DESC LIMIT :index,10");
       $req->bindParam(':index',$limitindex,PDO::PARAM_INT);
       $req->execute();
       $comments=array();
-      while($dbPost=$req->fetch()){
+      while($dbComment=$req->fetch()){
         $commentModel = new Comments();
-        $commentModel->hydrate($dbPost);
+        $commentModel->hydrate($dbComment);
         $comments[]=$commentModel;
       }
       return $comments;

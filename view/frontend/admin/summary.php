@@ -31,7 +31,7 @@
             <a class="nav-link" href="./index.php?action=dashboard">Administration</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Déconnexion</a>
+            <a class="nav-link" href="./index.php?action=disconnect">Déconnexion</a>
           </li>
         </ul>
       </div>

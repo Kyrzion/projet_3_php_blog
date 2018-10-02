@@ -31,7 +31,7 @@
             <a class="nav-link" href="./index.php?action=dashboard">Administration</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Déconnexion</a>
+            <a class="nav-link" href="./index.php?action=disconnect">Déconnexion</a>
           </li>
         </ul>
       </div>
@@ -61,8 +61,8 @@
         {
           if($reply->reportID() !== null && $reply->reportID() > 0){
             $color='colorreport';
-            echo'Commentaire signalé le'.$reply->Report_reportDate();
-            echo'<a class="btn btn-danger" href="./index.php?action=delReport&id='.$reply->reportID().'"> Supprimer le signalement</a>';
+            echo'Commentaire signalé le '.$reply->Report_reportDate();
+            echo'&nbsp; <a class="btn btn-danger" href="./index.php?action=delReport&id='.$reply->reportID().'"> Supprimer le signalement</a>';
           }
           else{
             $color='color';
