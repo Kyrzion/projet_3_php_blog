@@ -31,7 +31,7 @@
 
   <div class="row">
 
-          <!-- Blog Entries Column -->
+
           <div class="col-md-8">
 
             <h2 class="my-4 ">Billet simple pour l'Alaska
@@ -77,7 +77,7 @@
             <?php
             foreach($comments as $reponse)
             {?>
-                <p><strong><?= $reponse->author();?></strong> le <?= $reponse->commentDate_fr();?> &nbsp; &nbsp; &nbsp; <?php echo '<a class="btn btn-danger" href="./index.php?action=reportcom&amp;id='.$reponse->id().'&amp;postID='.$post->id().'">Signaler</a>'?></p>
+                <p><strong><?= htmlspecialchars($reponse->author());?></strong> le <?= $reponse->CommentDate_fr();?> &nbsp; &nbsp; &nbsp; <?php echo '<a class="btn btn-danger" href="./index.php?action=reportcom&amp;id='.$reponse->id().'&amp;postID='.$post->id().'">Signaler</a>'?></p>
                 <p><?= nl2br(htmlspecialchars($reponse->comment()))?></p>
             <?php
             }
@@ -87,12 +87,12 @@
     </div>
   </div>
 </div>
-<!-- Footer -->
+
 <footer class="py-5 bg-dark">
   <div class="container">
     <p class="m-0 text-center text-white">Copyright &copy; BERTET Théo - 2018</p>
   </div>
-  <!-- /.container -->
+
 </footer>
 
 <!-- Bootstrap core JavaScript -->

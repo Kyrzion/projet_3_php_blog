@@ -1,8 +1,10 @@
+
 <?php
 
 // Chargement des classes
 require_once('model/PostManager.php');
 require_once('model/CommentManager.php');
+require_once('model/UserManager.php');
 
     function listPosts($page)
     {
@@ -31,7 +33,8 @@ require_once('model/CommentManager.php');
         $affectedLines = $commentManager->postComment($postId, $author, $comment);
 
         if ($affectedLines === false) {
-            throw new Exception('Impossible d\'ajouter le commentaire !');
+            echo 'Impossible d\'ajouter le commentaire !
+            <a href="./index.php"> Retour à l\'index</a>';
         }
         else {
             header('Location: index.php?action=post&id=' . $postId);
@@ -73,18 +76,34 @@ require_once('model/CommentManager.php');
   {
     require('view/frontend/admin/dashboard.php');
   }
+
   function connect()
   {
-    $toto_hash = password_hash("toto",PASSWORD_BCRYPT);
-    if (password_verify($_POST["password"] ,$toto_hash)==true || $_SESSION['connect'] == true)
-    {
-    $_SESSION['connect'] = true;
-    header ('location:./index.php?action=dashboard');
+    $db = new \PDO('mysql:host=localhost;dbname=projet_2;charset=utf8', 'root', '');
+    $req = $db->prepare('SELECT id, password FROM user WHERE password = :password');
+    $passhash = password_hash($_POST['password'], PASSWORD_DEFAULT);
+    $result = $req->execute(array(
+      'password' => $password));
+    $result = $req->fetch();
+    $isPasswordOK = password_verify($_POST['password'], $result['password']);
+
+if (!$result)
+{
+    echo 'Mauvais mot de passe !';
+}
+else
+{
+    if ($isPasswordOK) {
+        session_start();
+
+        echo 'Vous êtes connecté !';
     }
     else {
-
+        echo 'Mauvais identifiant ou mot de passe !';
     }
+}
   }
+
   function summary($pagesummary)
   {
     $postManager = new PostManager();

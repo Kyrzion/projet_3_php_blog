@@ -10,13 +10,13 @@ class CommentManager extends Manager
         $db = $this->dbConnect();
         $comments = $db->prepare("SELECT id, author, comment, DATE_FORMAT(comment_date, '%d/%m/%Y à %Hh%imin') AS comment_date_fr FROM comments WHERE post_id = ? ORDER BY comment_date DESC");
         $comments->execute(array($postId));
-        $comments=array();
+        $posts=array();
         while($dbComment=$comments->fetch()){
           $CommentsModel = new Comments();
           $CommentsModel->hydrate($dbComment);
-          $comments[]=$CommentsModel;
+          $posts[]=$CommentsModel;
         }
-        return $comments;
+        return $posts;
     }
 
     public function postComment($postId, $author, $comment)

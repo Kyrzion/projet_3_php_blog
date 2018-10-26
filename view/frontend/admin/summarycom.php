@@ -72,10 +72,10 @@
           <div class="recap_list <?= $color;?>">
             <p class="<?= $color;?>"></p>
             <p>
-            <?php echo '<h5>'.$reply->author().'</h5>';?>
+            <?php echo '<h5>'.htmlspecialchars($reply->author()).'</h5>';?>
             <?php echo '<hr size=15 width=60% align=left >';?>
             <?php echo'<p >';?>
-            <?php echo $reply->comment();?>
+            <?php echo htmlspecialchars($reply->comment());?>
             <?php echo'<p >';?>
             <?php echo'<a class="btn btn-danger" href="./index.php?action=delComment&id='.$reply->id().'"> Supprimer</a>';?>
           </div>

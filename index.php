@@ -27,6 +27,8 @@ if (isset($_GET['action'])) {
             echo 'Erreur : aucun identifiant de billet envoyé';
         }
     }
+
+
     elseif ($_GET['action'] == 'AddPost') {
 
             if (!empty($_POST['titleform']) && !empty($_POST['contentform'])) {
@@ -36,6 +38,7 @@ if (isset($_GET['action'])) {
                 echo 'Erreur : tous les champs ne sont pas remplis !';
             }
     }
+
 
     elseif ($_GET['action'] == 'delPost'){
         if (isset($_GET['id']) && $_GET['id'] > 0){
