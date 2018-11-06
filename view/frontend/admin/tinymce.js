@@ -1,6 +1,6 @@
 tinymce.init({
   selector: 'textarea',
-  language_url : 'fr_FR.js',  // site absolute URL
+  language_url : 'view/frontend/admin/fr_FR.js',  // site absolute URL
   height: 500,
   menubar: false,
   plugins: [

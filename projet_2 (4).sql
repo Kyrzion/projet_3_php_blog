@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  ven. 26 oct. 2018 à 08:15
+-- Généré le :  mar. 06 nov. 2018 à 13:50
 -- Version du serveur :  5.7.19
 -- Version de PHP :  5.6.31
 
@@ -40,7 +40,7 @@ CREATE TABLE IF NOT EXISTS `admin` (
 --
 
 INSERT INTO `admin` (`id`, `password`) VALUES
-(1, '$2y$10$jNRLeJC.tMXp63kvLk/Qzu3VJQv5wDvXcdnVHQeYOklsPpGrwTDku');
+(1, '$2y$10$O7guRVf.1/iobXdGBB9fUekb1hzb5mpTesSNrzozajPQ20.5qPBpq');
 
 -- --------------------------------------------------------
 
@@ -57,16 +57,14 @@ CREATE TABLE IF NOT EXISTS `comments` (
   `comment_date` datetime NOT NULL,
   PRIMARY KEY (`id`),
   KEY `post_id` (`post_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `comments`
 --
 
 INSERT INTO `comments` (`id`, `post_id`, `author`, `comment`, `comment_date`) VALUES
-(12, 62, 'John', 'Magnifique billet ! Merci pour ce moment de partage.', '2018-06-20 13:05:49'),
-(16, 62, 'test', 'test', '2018-09-25 20:28:52'),
-(17, 62, 'test1', 'tessst', '2018-09-27 10:50:39');
+(12, 62, 'John', 'Magnifique billet ! Merci pour ce moment de partage.', '2018-06-20 13:05:49');
 
 -- --------------------------------------------------------
 
@@ -81,7 +79,7 @@ CREATE TABLE IF NOT EXISTS `posts` (
   `content` text NOT NULL,
   `creation_date` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=64 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=63 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `posts`
@@ -121,7 +119,6 @@ CREATE TABLE IF NOT EXISTS `report` (
 --
 
 INSERT INTO `report` (`id`, `comment_id`, `report_date`) VALUES
-(37, 16, '2018-09-25 20:59:24'),
 (39, 12, '2018-09-25 21:01:09');
 
 --

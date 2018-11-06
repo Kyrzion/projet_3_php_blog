@@ -1,5 +1,5 @@
 
-<?php session_start();?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -9,8 +9,7 @@
         <link href="public/styles.css" rel="stylesheet"/>
         <link href="public/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=apiKey=localhost"></script>
-        <script src="view/frontend/admin/tinymce.js"></script>
+
     </head>
 
     <body>
@@ -70,6 +69,9 @@
           <!-- Bootstrap core JavaScript -->
           <script src="vendor/jquery/jquery.min.js"></script>
           <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+          <script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=apiKey=localhost"></script>
+          <script src="view/frontend/admin/tinymce.js"></script>
 
       </body>
 </html>
